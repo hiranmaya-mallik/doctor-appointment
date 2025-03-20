@@ -8,12 +8,21 @@ const Doctors = () => {
   const [filterDoc, setFilterDoc] = useState([]);
   const { doctors } = useContext(AppContext);
 
+
+
+  
+  
+
   useEffect(() => {
-    if (speciality) {
-      setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
-    } else {
-      setFilterDoc(doctors);
+    if (doctors.length > 0) {
+      if (speciality) {
+        setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
+      } else {
+        setFilterDoc(doctors);
+      }
     }
+  
+
   }, [doctors, speciality]);
 
   return (
@@ -28,8 +37,9 @@ const Doctors = () => {
           <p>Neurologist</p>
           <p>Gastroenterologist</p>
         </div>
+  
         <div>
-          {filterDoc.map((item, index) => (
+          { filterDoc && filterDoc.map((item, index) => (
             <div
               onClick={() => navigate(`/appointment/${item._id}`)}
               className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
