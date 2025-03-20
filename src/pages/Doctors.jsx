@@ -14,7 +14,7 @@ const Doctors = () => {
   
 
   useEffect(() => {
-    if (doctors.length > 0) {
+    if (doctors.length >= 1) {
       if (speciality) {
         setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
       } else {
